@@ -34,7 +34,7 @@ public class TestsSimulateur {
                 Arguments.of(24000, "PACSE", 0, 0, false, 2),
                 Arguments.of(24000, "MARIE", 3, 1, false, 4.5),
                 Arguments.of(24000, "DIVORCE", 2, 0, true, 2.5),
-                Arguments.of(24000, "VEUF", 3, 0, true, 4.5)
+                Arguments.of(24000, "VEUF", 3, 0, true, 4)
                 );
 
     }
