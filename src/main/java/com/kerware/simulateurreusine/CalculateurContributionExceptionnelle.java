@@ -17,13 +17,23 @@ public class CalculateurContributionExceptionnelle {
             new ContributionTranche(1000000, Integer.MAX_VALUE, 0.04)
     };
 
+    /**
+     * Calcule la contribution exceptionnelle sur les hauts revenus en fonction
+     * du revenu fiscal de référence et du statut marital.
+     *
+     * @param revenuFiscalReference le montant du revenu fiscal de référence
+     * @param estCouple indique si le contribuable est un couple (true)
+     *                  ou une personne seule (false)
+     * @return le montant de la contribution exceptionnelle arrondi
+     */
     public double calculerContribution(double revenuFiscalReference, boolean estCouple) {
         ContributionTranche[] tranches = estCouple ? TRANCHES_COUPLE : TRANCHES_CELIBATAIRE;
         double contribution = 0;
 
         for (ContributionTranche tranche : tranches) {
             if (revenuFiscalReference > tranche.min) {
-                double revenuDansLaTranche = Math.min(revenuFiscalReference, tranche.max) - tranche.min;
+                double revenuDansLaTranche = Math.min(revenuFiscalReference, tranche.max)
+                                             - tranche.min;
                 contribution += revenuDansLaTranche * tranche.taux;
             }
         }

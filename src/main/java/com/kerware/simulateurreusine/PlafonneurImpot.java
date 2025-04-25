@@ -4,6 +4,7 @@ package com.kerware.simulateurreusine;
  * Calcule le plafonnement de la réduction d'impôt liée au quotient familial
  */
 public class PlafonneurImpot {
+    private static final double NOMBRE_PARTS = 0.5;
     private static final double PLAFOND_DEMI_PART = 1759; // Valeur du plafond pour une demi-part
 
     /**
@@ -18,7 +19,7 @@ public class PlafonneurImpot {
                                         double nombrePartsTotal, double nombrePartsDeclarants) {
         double baisseImpot = impotBrutDeclarants - impotBrutTotal;
         double ecartParts = nombrePartsTotal - nombrePartsDeclarants;
-        double plafondBaisseAutorisee = (ecartParts / 0.5) * PLAFOND_DEMI_PART;
+        double plafondBaisseAutorisee = (ecartParts / NOMBRE_PARTS) * PLAFOND_DEMI_PART;
 
         if (baisseImpot >= plafondBaisseAutorisee) {
             return impotBrutDeclarants - plafondBaisseAutorisee;

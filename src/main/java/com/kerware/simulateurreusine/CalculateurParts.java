@@ -22,7 +22,8 @@ public class CalculateurParts {
             parts += PART_PARENT_ISOLE;
         }
 
-        if (foyer.getSituationFamiliale() == SituationFamiliale.VEUF && foyer.getNbEnfantsACharge() > 0) {
+        if (foyer.getSituationFamiliale() == SituationFamiliale.VEUF &&
+                foyer.getNbEnfantsACharge() > 0) {
             parts += PART_VEUF_AVEC_ENFANT;
         }
 

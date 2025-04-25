@@ -5,6 +5,7 @@ package com.kerware.simulateurreusine;
  */
 public class CalculateurAbattement {
     // Constantes pour les abattements
+    private static final int REVENU_MINIMAL = 4950;
     private static final int MONTANT_MINIMAL = 495;
     private static final int MONTANT_MAXIMAL = 14171;
     private static final double TAUX = 0.1;
@@ -14,7 +15,8 @@ public class CalculateurAbattement {
      */
     public double calculerAbattement(FoyerFiscal foyer) {
         double abattement1 = calculerAbattementIndividuel(foyer.getRevenuNetDeclarant1());
-        double abattement2 = foyer.getSituationFamiliale().estCouple() ?
+        double abattement2 = foyer.getSituationFamiliale().estCouple() &&
+                             foyer.getRevenuNetDeclarant2() > REVENU_MINIMAL ?
                 calculerAbattementIndividuel(foyer.getRevenuNetDeclarant2()) : 0;
 
         return abattement1 + abattement2;
